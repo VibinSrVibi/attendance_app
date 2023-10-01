@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Grand Slam Cricket Club</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="click-trigger">
+        <ion-icon name="log-out-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-popover [isOpen]="isOpen" trigger="click-trigger" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding" (click)="logout()">Logout</ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="user_type=='user'">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Welcome {{username}}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      {{current_date | date : "fullDate"}}
+    <br/>
+    <ion-button  *ngIf="!today_login_status" color="primary" expand="block" (click)="save_logIn()">Log In</ion-button>
+    <div *ngIf="today_login_status">
+      <br/>
+      Today's Login - Success
+    </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-content [fullscreen]="true" *ngIf="user_type=='admin'">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Welcome Admin</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      {{current_date | date : "fullDate"}}
+    <br/>
+    Total Present: {{present_users}}
+    <br/>
+    Total Absent: {{absent_users}}
+    <ion-item-divider></ion-item-divider>
+    <div align="center">
+      <ion-button fill="clear" (click)="show_current_date_attendance()">View</ion-button>
+    </div>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button *ngFor="let tab of tab_data" (click)="tab_route(tab.route)">
+          <ion-icon name="{{tab.icon}}" color="primary"></ion-icon>
+          <ion-label>{{tab.text}}</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    
+    </ion-tabs> 
+  </ion-toolbar>
+</ion-footer>
+
+

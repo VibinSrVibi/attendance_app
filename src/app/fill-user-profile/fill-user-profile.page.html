@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Fill User Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <div align="center">
+    <ion-avatar class="profile-pic-container">
+      <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+    </ion-avatar>
+  </div> -->
+  <ion-list>
+    <ion-item >
+      <ion-label position="floating">Username</ion-label>
+      <ion-input  [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Email</ion-label>
+      <ion-input  [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">DOB</ion-label>
+      <br/>
+      <ion-input  [(ngModel)]="dob" type="date"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="save_fill_user_profile()" expand="block">Submit</ion-button>
+</ion-content>

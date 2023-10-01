@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Grand Slam Cricket Club</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-img src="../../assets/images/grandslam.jpg"></ion-img> -->
+  <h3 class="header">User register</h3>
+  <ion-list>
+    <ion-item >
+      <ion-label position="floating">Country Code</ion-label>
+      <ion-input  [(ngModel)]="country_code" readonly=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Mobile Number</ion-label>
+      <ion-input  [(ngModel)]="mobile"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="user_register()" color="primary" expand="block">Register</ion-button>
+  <ion-item-divider></ion-item-divider>
+  <span>(or)</span>
+  <ion-item-divider></ion-item-divider>
+  <ion-button (click)="goto_admin_login()" color="primary" expand="block">Continue as Admin</ion-button>
+  <!-- <ion-img src="../../assets/images/grandslam.jpg"></ion-img> -->
+</ion-content>
