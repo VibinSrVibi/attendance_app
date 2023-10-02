@@ -80,7 +80,7 @@ export class ShowAttendanceReportPage implements OnInit {
         },{
           text: 'Paid Report',
           icon: 'card-outline',
-          route: ''
+          route: 'show-monthly-fee-report'
         }
       ]
       this.get_attendance_report();

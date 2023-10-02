@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'show-attendance-report',
     loadChildren: () => import('./show-attendance-report/show-attendance-report.module').then( m => m.ShowAttendanceReportPageModule)
+  },
+  {
+    path: 'show-monthly-fee-report',
+    loadChildren: () => import('./show-monthly-fee-report/show-monthly-fee-report.module').then( m => m.ShowMonthlyFeeReportPageModule)
   }
 ];
 @NgModule({

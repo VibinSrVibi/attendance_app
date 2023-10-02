@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  BaseURL: 'http://localhost/attendance_app_backend/api/'
+  BaseURL: 'http://localhost/attendance_app_backend/api/',
+  //BaseURL: 'https://vbbingo.com/attendance_app/api/'
 };
 
 /*

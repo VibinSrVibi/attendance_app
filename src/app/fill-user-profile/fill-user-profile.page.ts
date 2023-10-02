@@ -41,27 +41,35 @@ export class FillUserProfilePage implements OnInit {
 
   async save_fill_user_profile(){
     if(this.username!='' && this.email!='' && this.dob!=''){
-      let body={
-        user_id: this.user_id,
-        username: this.username,
-        email: this.email,
-        dob: this.dob,
-        profile_pic: this.profile_pic ,
-        aksi: 'fill_user_profile'
-      }
-      console.log(body)
-      let url=environment.BaseURL+'register-api.php';
-      this.http.post(url,body).subscribe(res=>{
-        this.updateDataResponse=res;
-        console.log('result ',this.updateDataResponse)
-        if(this.updateDataResponse.status==true && this.updateDataResponse.statuscode==200){
-          this.get_user_profile_data(this.user_id);
-          console.log('yes')
-          this.storage.set('login_status',1);
-          this.storage.set('username',this.username)
-          this.router.navigate(['dashboard']);
+      const expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+      const email: string = this.email;
+      const result: boolean = expression.test(email); 
+      if(result){
+        let body={
+          user_id: this.user_id,
+          username: this.username,
+          email: this.email,
+          dob: this.dob,
+          profile_pic: this.profile_pic ,
+          aksi: 'fill_user_profile'
         }
-      })
+        console.log(body)
+        let url=environment.BaseURL+'register-api.php';
+        this.http.post(url,body).subscribe(res=>{
+          this.updateDataResponse=res;
+          console.log('result ',this.updateDataResponse)
+          if(this.updateDataResponse.status==true && this.updateDataResponse.statuscode==200){
+            this.get_user_profile_data(this.user_id);
+            console.log('yes')
+            this.storage.set('login_status',1);
+            this.storage.set('username',this.username)
+            this.router.navigate(['dashboard']);
+          }
+        });
+      }else{
+        this.presentToast('bottom', 'Please enter valid mail id');
+      }
+      
     }else{
       this.presentToast('bottom', 'Please fill required data');
     }

@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Grand Slam Cricket Club</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="click-trigger2">
+        <ion-icon name="log-out-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-popover [isOpen]="isOpen" trigger="click-trigger2" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding" (click)="logout()">Logout</ion-content>
+      </ng-template>
+    </ion-popover>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding-top: 50%;padding-left: 35%;">
+    Coming Soon...
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button *ngFor="let tab of tab_data" (click)="tab_route(tab.route)">
+          <ion-icon name="{{tab.icon}}" color="primary"></ion-icon>
+          <ion-label>{{tab.text}}</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    
+    </ion-tabs> 
+  </ion-toolbar>
+</ion-footer>
+
+

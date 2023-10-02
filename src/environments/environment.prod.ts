@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  BaseURL: 'https://vbbingo.com/attendance_app/api/'
 };

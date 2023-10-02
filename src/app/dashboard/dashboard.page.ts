@@ -34,7 +34,7 @@ export class DashboardPage implements OnInit {
      }
 
   async ngOnInit() {
-    
+    console.log('current route ',this.router.url)
     // this.user_type=await this.storage.get('user_type');
     
     // this.current_date=new Date();
@@ -98,7 +98,7 @@ export class DashboardPage implements OnInit {
         },{
           text: 'Paid Report',
           icon: 'card-outline',
-          route: ''
+          route: 'show-monthly-fee-report'
         }
       ]
     }else{

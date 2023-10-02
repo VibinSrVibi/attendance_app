@@ -2,15 +2,15 @@
   <ion-toolbar color="primary">
     <ion-title>Grand Slam Cricket Club</ion-title>
     <ion-buttons slot="end">
-      <ion-button id="click-trigger">
-        <ion-icon name="log-out-outline" size="large"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-popover [isOpen]="isOpen" trigger="click-trigger" triggerAction="click">
-      <ng-template>
-        <ion-content class="ion-padding" (click)="logout()">Logout</ion-content>
-      </ng-template>
-    </ion-popover>
+        <ion-button id="click-trigger1">
+          <ion-icon name="log-out-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-popover [isOpen]="isOpen" trigger="click-trigger1" triggerAction="click">
+        <ng-template>
+          <ion-content class="ion-padding" (click)="logout()">Logout</ion-content>
+        </ng-template>
+      </ion-popover>
   </ion-toolbar>
 </ion-header>
 
@@ -63,7 +63,7 @@
         <td>{{dates.date}}</td>
         <ng-container *ngFor="let data of dates.data">
           <td *ngIf="data.status==0">A</td>
-          <td *ngIf="data.status==1" style="background-color: green;">P</td>
+          <td *ngIf="data.status==1" style="background-color: #00FFFF;">P</td>
         </ng-container>
       </tr>
     </table>
@@ -120,7 +120,7 @@
           <td>{{dates.date}}</td>
           <ng-container *ngFor="let data of dates.data">
             <td *ngIf="data.status==0">A</td>
-            <td *ngIf="data.status==1" style="background-color: green;">P</td>
+            <td *ngIf="data.status==1" style="background-color: #00FFFF;">P</td>
           </ng-container>
         </tr>
       </table>
