@@ -53,10 +53,16 @@ export class ShowAttendanceReportPage implements OnInit {
     this.current_month=ans*1+1;
     console.log(this.current_month)
     this.current_year=current_year;
-    this.years.push(current_year);
+    if(!this.years.includes(current_year)){
+      this.years.push(current_year);
+    }
+    
     for(var i=1; i<5; i++){
       let previous_year=current_year-i;
-      this.years.push(previous_year);
+      if(!this.years.includes(previous_year)){
+        this.years.push(previous_year);
+      }
+      
     }
     //this.years=this.years.reverse();
     console.log('years',this.years)

@@ -15,9 +15,58 @@
 </ion-header>
 
 <ion-content>
-  <div style="padding-top: 50%;padding-left: 35%;">
-    Coming Soon...
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-select aria-label="Month" interface="popover" placeholder="Select Month" value="{{current_month}}" (ionChange)="choose_month($event)">
+          <ion-select-option value="01">January</ion-select-option>
+          <ion-select-option value="02">February</ion-select-option>
+          <ion-select-option value="03">March</ion-select-option>
+          <ion-select-option value="04">April</ion-select-option>
+          <ion-select-option value="05">May</ion-select-option>
+          <ion-select-option value="06">June</ion-select-option>
+          <ion-select-option value="07">July</ion-select-option>
+          <ion-select-option value="08">August</ion-select-option>
+          <ion-select-option value="09">September</ion-select-option>
+          <ion-select-option value="10">October</ion-select-option>
+          <ion-select-option value="11">November</ion-select-option>
+          <ion-select-option value="12">December</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-select aria-label="Year" interface="popover" placeholder="Select Year" value="{{current_year}}" (ionChange)="choose_year($event)">
+          <ng-container *ngFor="let year of years">
+            <ion-select-option value="{{year}}">{{year}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="clear" (click)="get_monthly_fee_report()">
+          <ion-icon name="search" size="large"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="!show_report_flag">
+    No Data Found
   </div>
+  <div *ngIf="show_report_flag" class="table-responsive">
+    <table class="table table-bordered" border="1">
+      <tr>
+        <th>Username</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let data of monthlyFreeReport">
+        <td>{{data.username}}</td>
+        <td *ngIf="data.paid_status==1">Paid</td>
+        <td *ngIf="data.paid_status==0">
+          <ion-button (click)="mark_as_paid(data.user_id,data.month,data.year)">Mark as Paid</ion-button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+
 
 </ion-content>
 
