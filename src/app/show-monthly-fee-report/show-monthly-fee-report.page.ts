@@ -151,14 +151,27 @@ export class ShowMonthlyFeeReportPage implements OnInit {
       month: month,
       year: year
     }
+    console.log(body)
     this.http.post(url,body).subscribe(res=>{
       this.markAsPaidResponse=res;
       if(this.markAsPaidResponse.status){
-
+        this.presentToast('bottom','Updated successfully');
+        this.get_monthly_fee_report();
       }else{
-
+        this.presentToast('bottom',this.markAsPaidResponse.msg);
       }
     })
+  }
+
+  async presentToast(position: 'top' | 'middle' | 'bottom', message:any='') {
+    //position: 'top' | 'middle' | 'bottom'
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: position,
+    });
+
+    await toast.present();
   }
 
 }

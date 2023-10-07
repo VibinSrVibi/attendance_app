@@ -41,6 +41,7 @@ export class AppComponent {
   }
 
   async setupListener() {
+    //alert(this.router.url)
     App.addListener('appStateChange', ({ isActive }) => {
       if (!isActive) {
         // App went to background
@@ -54,10 +55,11 @@ export class AppComponent {
     App.addListener('backButton', (data) => {
       console.log('back button click:', JSON.stringify(data));
       if (data.canGoBack) {
-        if(this.router.url!=''){
-          window.history.back();
-        }else{
+        //alert(this.router.url)
+        if(this.router.url=='/dashboard'){
           App.exitApp();
+        }else{
+          window.history.back();
         }
       } else {
         // Maybe show alert before closing app?

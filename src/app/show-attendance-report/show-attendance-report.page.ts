@@ -32,6 +32,7 @@ export class ShowAttendanceReportPage implements OnInit {
   show_attendance_flag=false;
   user_data:any;
   attendance_data:any;
+  date:any;
   constructor(private storage: Storage,
     private toastController: ToastController,
     private http: HttpClient,
@@ -69,6 +70,11 @@ export class ShowAttendanceReportPage implements OnInit {
     this.user_type=await this.storage.get('user_type');
     
     this.current_date=new Date();
+    let day="" +date.getDate();
+    var pad1 = "00"
+    var ans1:any = pad1.substring(0, pad1.length - day.length) + day
+    this.date=this.current_year+'-'+this.current_month+'-'+ans1;
+    console.log(this.date)
     
 
     console.log(this.user_id,this.user_type,this.username)

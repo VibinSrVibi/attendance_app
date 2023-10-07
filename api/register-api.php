@@ -71,6 +71,20 @@
             $result=json_encode(array('status'=>false,'statuscode'=>200,'msg'=>'wrong user id and password')); 
         }
         echo $result;
+    }elseif($postjson['aksi']=='mark_monthly_fee_as_paid'){
+        //check same data already exist
+        $check_data=mysqli_query($con,"select * from `monthly_free` where user_id='".$postjson['user_id']."' and month='".$postjson['month']."' and year='".$postjson['year']."'");
+        if(mysqli_affected_rows($con)>0){
+            $result=json_encode(array('status'=>false,'statuscode'=>200,'msg'=>'already same data exist in db')); 
+        }else{
+            $save_monthly_fee=mysqli_query($con,"INSERT INTO `monthly_fee`(`user_id`, `datetime`, `month`, `year`, `amount`) VALUES ('".$postjson['user_id']."','".$datetime."','".$postjson['month']."','".$postjson['year']."','300')");
+            if(mysqli_affected_rows($con)>0){
+                $result=json_encode(array('status'=>true,'statuscode'=>200,'msg'=>'success'));
+            }else{
+                $result=json_encode(array('status'=>false,'statuscode'=>200,'msg'=>'Not saved to db')); 
+            }
+        }
+        echo $result;
     }
     
 

@@ -17,7 +17,7 @@
 
 $host		= "localhost"; // Use Local Host Only       
 $username	= "root"; 
-$password	= "";  
+$password	= "vbbingo@123";  
 $db_name	= "attendance_app";  
  
 $con = mysqli_connect($host, "root", "", "attendance_app"); 

@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { App } from '@capacitor/app';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +21,7 @@ export class RegisterPage implements OnInit {
               private storage: Storage) { }
 
   ngOnInit() {
+    //this.setupListener()
   }
 
   user_register(){
@@ -79,6 +81,26 @@ export class RegisterPage implements OnInit {
     });
 
     await toast.present();
+  }
+
+  async setupListener() {
+    App.addListener('appStateChange', ({ isActive }) => {
+      if (!isActive) {
+        // App went to background
+        // Save anything you fear might be lost
+      } else {
+        // App went to foreground
+        // restart things like sound playing
+      }
+    });
+
+    App.addListener('backButton', (data) => {
+      console.log('back button click:', JSON.stringify(data));
+      
+        // Maybe show alert before closing app?
+        App.exitApp();
+      
+    });
   }
 
 }

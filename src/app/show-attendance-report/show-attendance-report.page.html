@@ -118,9 +118,9 @@
         </tr>
         <tr *ngFor="let dates of attendance_data">
           <td>{{dates.date}}</td>
-          <ng-container *ngFor="let data of dates.data">
-            <td *ngIf="data.status==0">A</td>
-            <td *ngIf="data.status==1" style="background-color: #00FFFF;">P</td>
+          <ng-container *ngFor="let data of dates.data" >
+            <td *ngIf="data.status==0 && dates.date<=date" >A</td>
+            <td *ngIf="data.status==1 && dates.date<=date" style="background-color: #00FFFF;">P</td>
           </ng-container>
         </tr>
       </table>
